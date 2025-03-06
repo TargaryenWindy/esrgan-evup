@@ -33,6 +33,19 @@ STAGGER_DELAY = 10  # Delay in seconds between starting each batch's extraction 
 # To higher res you should increase this value to something about 15-30
 # depending on your BATCH_SIZE variable.
 
+BATCH_SIZE = 20 # Batch size (in seconds). 0 = processes the whole video in one batch.
+# Note that if set to 0, the concurrent batches will only be one,
+# also if set to 0, make sure you have enough disk space since it'll
+# extract all the video frames before starts processing.
+# keeping it small it'll extract only what you defined at a time,
+# ideal if you don't have much space. Also if you set too large and
+# the video is short, it may not have enough batches to be processed
+# concurrently by the set value in concurrent batches...
+
+FINAL_FILE_FORMAT_OVERRIDE = "false" # Overrides final output file format.
+# Set to ".mp4" or any other file format to force that format,
+# or set to "false" to use the input file's format.
+
 # Variables for ESRGAN options:
 ESRGAN_SCALE = "2"  # Value for the -s option (scale)
 # This value must match the model upscaler multiplier
@@ -45,22 +58,9 @@ ESRGAN_TILE = "1920"  # Value for the -t option (tile size in esrgan)
 ESRGAN_EXTRA_ARGS = ""  # Additional ESRGAN arguments.
 # Only put add something here if you know what you're doing.
 
-BATCH_SIZE = 20 # Batch size (in seconds). 0 = processes the whole video in one batch.
-# Note that if set to 0, the concurrent batches will only be one,
-# also if set to 0, make sure you have enough disk space since it'll
-# extract all the video frames before starts processing.
-# keeping it small it'll extract only what you defined at a time,
-# ideal if you don't have much space. Also if you set too large and
-# the video is short, it may not have enough batches to be processed
-# concurrently by the set value in concurrent batches...
-
-FFMPEG_REASSEMBLY_ARGS = "-c:v libx265 -pix_fmt yuv420p"  # Variable for ffmpeg arguments
+FFMPEG_REASSEMBLY_ARGS = "-c:v libx264 -pix_fmt yuv420p"  # Variable for ffmpeg arguments
 # Arguments for the final video encoding with ffmpeg.
 # Maybe you should leave as default if you don't know what you're doing.
-
-FINAL_FILE_FORMAT_OVERRIDE = ".mkv" # Overrides final output file format.
-# Set to ".mp4" or any other file format to force that format,
-# or set to "false" to use the input file's format.
 
 # ------------------------------------------------------------------
 
