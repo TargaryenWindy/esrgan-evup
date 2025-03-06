@@ -1,7 +1,7 @@
 # Real-ESRGAN Efficient Video Upscaler
 This project is a batch-based video upscaler designed to make efficient use of Real-ESRGAN-ncnn-vulkan by running concurrent batches, ensuring optimal GPU utilization.
 
-#How It Works
+# How It Works
 The script splits a video into batches of frames, processes them concurrently, then put the video back together while maintaining audio and metadata.
 
 # Key Features
